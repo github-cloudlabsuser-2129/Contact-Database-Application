@@ -51,7 +51,7 @@ jobs:
 
     - name: Restore NuGet packages
       run: |
-        nuget restore *.sln
+        nuget restore '**/CRUD application 2.csproj'
 
     - name: Build and publish
       run: |
