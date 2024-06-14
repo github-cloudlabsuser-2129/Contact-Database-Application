@@ -34,6 +34,7 @@ jobs:
         resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP }}
         template: deploy.json
         parameters: deploy.parameters.json
+        deploymentMode: 'Incremental'
       env:
         AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
 

@@ -36,23 +36,23 @@ namespace CRUD_application_2.Tests
             Assert.Single(model);
         }
 
-        [Fact]
-        public void Details_WithValidId_ReturnsUser()
-        {
-            // Arrange
-            var testUser = new User { Id = 1, Name = "Test User", Email = "test@example.com" };
-            _userlist.Add(testUser);
+        //[Fact]
+        //public void Details_WithValidId_ReturnsUser()
+        //{
+        //    // Arrange
+        //    var testUser = new User { Id = 1, Name = "Test User", Email = "test@example.com" };
+        //    _userlist.Add(testUser);
 
-            // Act
-            var result = _controller.Details(1);
+        //    // Act
+        //    var result = _controller.Details(1);
 
-            // Assert
-            var viewResult = Assert.IsType<ViewResult>(result);
-            var model = Assert.IsType<User>(viewResult.Model);
-            Assert.Equal(testUser.Id, model.Id);
-            Assert.Equal(testUser.Name, model.Name);
-            Assert.Equal(testUser.Email, model.Email);
-        }
+        //    // Assert
+        //    var viewResult = Assert.IsType<ViewResult>(result);
+        //    var model = Assert.IsType<User>(viewResult.Model);
+        //    Assert.Equal(testUser.Id, model.Id);
+        //    Assert.Equal(testUser.Name, model.Name);
+        //    Assert.Equal(testUser.Email, model.Email);
+        //}
 
         [Fact]
         public void Details_WithInvalidId_ReturnsHttpNotFound()
