@@ -3,13 +3,13 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "name": {
-            "value": "<your-app-service-name>"
+            "value": "crudapp02183"
         },
         "location": {
-            "value": "<your-location>"
+            "value": "Central US"
         },
         "appServicePlanName": {
-            "value": "<your-app-service-plan-name>"
+            "value": "crudapp02183-plan"
         }
     }
 }
