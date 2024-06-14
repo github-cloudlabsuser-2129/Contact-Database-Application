@@ -15,16 +15,20 @@
     "resources": [
         {
             "type": "Microsoft.Web/serverfarms",
-            "apiVersion": "2018-02-01",
+            "apiVersion": "2018-11-01",
             "name": "[parameters('appServicePlanName')]",
             "location": "[parameters('location')]",
             "sku": {
-                "name": "S1",
-                "tier": "Standard",
-                "size": "S1",
-                "family": "S",
+                "name": "F1",
+                "tier": "Free",
+                "size": "F1",
+                "family": "F",
                 "capacity": 1
+            },
+            "properties": {
+                "name": "[parameters('appServicePlanName')]"
             }
+
         },
         {
             "type": "Microsoft.Web/sites",
@@ -35,7 +39,15 @@
                 "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]"
             ],
             "properties": {
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]"
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                            "name": "WEBSITE_RUN_FROM_PACKAGE",
+                            "value": "1"
+                        }
+                    ]
+                }
             }
         }
     ]
