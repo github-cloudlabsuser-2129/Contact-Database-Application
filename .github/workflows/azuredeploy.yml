@@ -46,16 +46,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.0.x
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.0.2
+
+    - name: Restore NuGet packages
+      run: |
+        nuget restore *.sln
 
     - name: Build and publish
       run: |
-        dotnet restore
-        dotnet build --configuration Release
-        dotnet publish --configuration Release --output ./output
+        msbuild /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile.pubxml
 
     - name: Login to Azure      
       uses: azure/login@v2
